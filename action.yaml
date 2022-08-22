@@ -1,0 +1,13 @@
+name: "Pull Request"
+description: Runs rules against PRs
+inputs:
+  ADMIN_PAT:
+    description: ADMIN_PAT
+    required: true
+runs:
+  using: composite
+  steps:
+    - name: PR Title Lint
+      uses: amannn/action-semantic-pull-request@v4
+      env:
+        GITHUB_TOKEN: ${{ inputs.ADMIN_PAT }}
