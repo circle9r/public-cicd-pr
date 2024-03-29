@@ -8,6 +8,7 @@ runs:
   using: composite
   steps:
     - name: PR Title Lint
+      if: github.event.pull_request.state == 'open'
       uses: amannn/action-semantic-pull-request@v5
       env:
         GITHUB_TOKEN: ${{ inputs.ADMIN_PAT }}
