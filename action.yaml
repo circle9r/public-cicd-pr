@@ -2,8 +2,8 @@ name: "Pull Request"
 description: Runs rules against PRs
 inputs:
   ADMIN_PAT:
-    description: ADMIN_PAT
-    required: true
+    description: Deprecated and ignored. The title lint uses the workflow's own GITHUB_TOKEN (needs pull-requests read).
+    required: false
 runs:
   using: composite
   steps:
@@ -11,4 +11,4 @@ runs:
       if: github.event.pull_request.state == 'open'
       uses: amannn/action-semantic-pull-request@v6
       env:
-        GITHUB_TOKEN: ${{ inputs.ADMIN_PAT }}
+        GITHUB_TOKEN: ${{ github.token }}
